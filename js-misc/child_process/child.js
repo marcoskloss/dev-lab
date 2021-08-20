@@ -2,10 +2,20 @@ const http = require('http');
 const fibonacci = require('fibonacci');
 const { fork } = require('child_process');
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
   if (req.url === '/stress-sync') {
     const result = fibonacci.iterate(10000);
     return res.end(result.ms.toString());
+  }
+
+  if (req.url === '/stress-promise') {
+    const fib = () => new Promise((resolve) => {
+      const result  = fibonacci.iterate(10000);
+      resolve(result.ms);
+    });
+
+    const ms = await fib();
+    return res.end(ms.toString());
   }
 
   if (req.url === '/stress-child') {
