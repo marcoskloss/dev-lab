@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./stlye.css">
+    <title>Tab menu</title>
+  </head>
+  <body>
+    <aside>
+      <header class="tab-header">
+        <h1>Title</h1>
+        <button class="tab-toggle" onclick="toggle()">X</button>
+      </header> 
+
+      <div class="tab-body">
+        <div class="tab-group">
+          <div class="tab-group-icon">
+            <img src="./assets/user.svg" alt="User" />
+          </div>
+
+          <div class="tab-group-label">
+            <h3>User</h3>
+          </div>
+        </div>
+
+        <div class="tab-group">
+          <div class="tab-group-icon">
+            <img src="./assets/user.svg" alt="User" />
+          </div>
+
+          <div class="tab-group-label">
+            <h3>Settings</h3>
+          </div>
+        </div>
+      </div>
+
+        <div class="tab-group tab-footer">
+          <div class="tab-group-icon">
+            <img src="./assets/user.svg" alt="User" />
+          </div>
+
+          <div class="tab-group-label">
+            <h3>Logout</h3>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <main>
+      <h1>Main content</h1>
+    </main>
+
+    <script>
+      const aside = document.querySelector('aside');
+      const toggleBtn = document.querySelector('.tab-toggle');
+
+      function toggle() {
+        aside.classList.toggle('hidden-aside');
+        toggleBtn.classList.toggle('hidden-aside'); 
+      }
+    </script>
+  </body>
+</html>
