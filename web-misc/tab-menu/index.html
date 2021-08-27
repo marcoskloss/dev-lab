@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./stlye.css">
     <title>Tab menu</title>
   </head>
-  <body>
+  <body class='aside-hidden'>
     <aside>
       <header class="tab-header">
         <h1>Title</h1>
@@ -54,12 +54,10 @@
     </main>
 
     <script>
-      const aside = document.querySelector('aside');
-      const toggleBtn = document.querySelector('.tab-toggle');
+      const body = document.querySelector('body');
 
       function toggle() {
-        aside.classList.toggle('hidden-aside');
-        toggleBtn.classList.toggle('hidden-aside'); 
+        body.classList.toggle('hidden-aside'); 
       }
     </script>
   </body>
