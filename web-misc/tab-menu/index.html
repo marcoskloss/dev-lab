@@ -12,25 +12,31 @@
   <body class='aside-hidden'>
     <aside>
       <header class="tab-header">
-        <h1>Title</h1>
-        <button class="tab-toggle" onclick="toggle()">X</button>
+        <h1>MyPage</h1>
+        <div class="tab-toggle" onclick="toggle()">
+          <div class='tab-toggle-bx'></div>
+        </div>
       </header> 
 
       <div class="tab-body">
         <div class="tab-group">
-          <div class="tab-group-icon">
-            <img src="./assets/user.svg" alt="User" />
-          </div>
+          <img class='tab-group-icon' src="./assets/user.svg" alt="User" />
 
           <div class="tab-group-label">
-            <h3>User</h3>
+            <h3>Profile</h3>
           </div>
         </div>
 
         <div class="tab-group">
-          <div class="tab-group-icon">
-            <img src="./assets/user.svg" alt="User" />
+          <img class='tab-group-icon' src="./assets/mail.svg" alt="User" />
+
+          <div class="tab-group-label">
+            <h3>Mail</h3>
           </div>
+        </div>
+
+        <div class="tab-group">
+          <img class='tab-group-icon' src="./assets/settings.svg" alt="User" />
 
           <div class="tab-group-label">
             <h3>Settings</h3>
@@ -39,9 +45,7 @@
       </div>
 
         <div class="tab-group tab-footer">
-          <div class="tab-group-icon">
-            <img src="./assets/user.svg" alt="User" />
-          </div>
+          <img class='tab-group-icon' src="./assets/logout.svg" alt="User" />
 
           <div class="tab-group-label">
             <h3>Logout</h3>
