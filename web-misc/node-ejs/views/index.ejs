@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+    <head>
+        <title>EJS example</title>
+    </head>
+    <body>
+        <header>
+            <h1>Todo List (again)</h1>
+
+            <nav>
+                <a href='/'>Home</a>
+                <a href='/foo'>Other</a>
+            </nav>
+        </header>
+        <main>
+            <ul>
+                <% todos.forEach(todo => { %>
+                    <li>
+                        <div>
+                            <h3><%= todo.title %></h3>
+                            <p><%= todo.description %></p>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        </main>
+</html>
