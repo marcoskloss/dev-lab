@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Encurtador de URL</title>
+    </head>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            font: 16px Roboto, sans-serif;
+        }
+        h1 {
+            margin-top: 100px;
+        }
+        form {
+            margin-top: 110px;
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            max-width: 600px;
+            padding: 15px;
+        }
+        form div:first-child {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        } 
+        form input {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            box-shadow: 0px 0px 0px 1px rgba(25,139,255,0.6);
+        }
+        form input:focus {
+            box-shadow: 0px 0px 0px 2px rgba(25,139,255,0.6);
+        }
+        form button {
+            padding: 10px 25px;
+            border: none;
+            background: rgba(25, 139, 255, 0.6);
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+            color: white;
+        }
+    </style>
+
+    <body>
+        <h1>Encurtador de URL</h1>
+        <form>
+            <div>
+                <label for="url">URL completa</label>
+                <input type="url" id="url" name="url" placeholder='url' required>
+            </div>
+            <div>
+                <button type="submit">Encurtar</button>
+            </div>
+        </form>
+    </body>
+
+    <script>
+        const form = document.querySelector('form')
+        form.addEventListener('submit', onSubmit);
+
+        function onSubmit(ev) {
+            ev.preventDefault()
+
+            const url = ev.target.children.item(0)
+                .children.namedItem('url')
+                .value
+
+            const body = JSON.stringify({ url })
+            const headers = new Headers()
+
+            headers.append('Content-Type', 'application/json')
+
+            fetch('/url', { method: 'POST', body, headers })
+                .then(response => response.json())
+                .then(data => {
+                    const msg = `URL gerada: ${data.shortUrl}`
+                    alert(msg)
+                })
+        }
+    </script>
+</html>
