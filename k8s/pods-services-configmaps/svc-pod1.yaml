@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-pod1
+spec:
+  type: NodePort # extende o ClusterIP e também permite comunicação com o mundo externo
+  ports:
+    - port: 80
+      #targetPort: 80 (implícito)
+      nodePort: 30000
+      # nodePort é a porta que da maquina host em qual esse service será bindado,
+      # os intervalos possiveis sao de 30000 ate 32767. Essa é a qual será usada
+      # para comunicacao do mundo externo
+  selector:
+    app: primeiro-pod
