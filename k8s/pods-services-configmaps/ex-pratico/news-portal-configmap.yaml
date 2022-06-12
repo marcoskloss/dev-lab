@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: news-portal-configmap
+data:
+  # usando o svc do news-system
+  IP_SISTEMA: svc-news-system:30001
+  #também eh possivel assim: acessando pelo svc nodePort
+  #o ip abaixo eh o ip INTERNAL-IP do comando `kubectl get nodes`
+  #IP_SISTEMA: http://192.168.49.2:30001
