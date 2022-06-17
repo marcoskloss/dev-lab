@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity()
 @Table(name = "product")
@@ -21,8 +23,26 @@ public class Product {
     @Column(name = "created_at")
     private LocalDate createdAt = LocalDate.now();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
+
+    @OneToMany(mappedBy = "product") // informando o relacionamento do outro lado (OrderItem) para evitar que o
+    // hibernate gere a tabela de join automaticamente
+    private List<OrderItem> orderItems = new ArrayList<>();
+
+    public Product() {}
+
+    public Product(String name, String description, BigDecimal price, Category category) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+    }
+
+    public void addOrderItem(OrderItem item) {
+        orderItems.add(item);
+        item.setProduct(this);
+    }
 
     public void setCategory(Category category) { this.category = category; }
     public Category getCategory() { return category; }
