@@ -1,0 +1,10 @@
+<div class="todo" [ngClass]="{ isDone: data.done, toBeRemoved: removed }">
+  <span>{{ data.content }}</span>
+  <div class="actions">
+    <button class="done-btn" (click)="handleChangeStatus(data)">
+      {{ data.done ? "Undone" : "Done" }}
+    </button>
+
+    <button class="remove-btn" (click)="handleRemoveTodo(data)">Remove</button>
+  </div>
+</div>

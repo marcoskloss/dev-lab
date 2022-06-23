@@ -1,0 +1,8 @@
+<div>
+  <app-todo
+    *ngFor="let todo of todoList"
+    [data]="todo"
+    (onChangeStatus)="handleChangeStatus($event)"
+    (onRemoveTodo)="handleRemoveTodo($event)"
+  ></app-todo>
+</div>
