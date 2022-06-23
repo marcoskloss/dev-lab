@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -9,17 +9,19 @@ import { TodoService } from 'src/app/services/todo.service';
 })
 export class TodoFormComponent {
   form = new FormGroup({
-    content: new FormControl(''),
+    content: new FormControl('', Validators.required),
   });
   constructor(private todoService: TodoService) {}
 
   handleSubmit() {
-    const { value } = this.form.get('content');
-    if (!value) {
-      alert('Valor obrigatorio');
-      // https://angular.io/api/forms/Validators
+    const contentControl = this.form.get('content');
+    const { value } = contentControl;
+
+    if (contentControl.errors?.required) {
+      alert('Informe o conteúdo da Todo!');
       return;
     }
+
     this.todoService.emitAddNewTodo(value);
     this.form.get('content').setValue('');
   }
