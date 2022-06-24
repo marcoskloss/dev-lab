@@ -57,6 +57,33 @@ app.post("/login", async (req, res) => {
   return res.send({ user, token });
 });
 
+app.get("/me", async (req, res) => {
+  const authHeader = req.headers?.["authorization"];
+  if (!authHeader) {
+    return res.status(401).send({ message: "authorization header not found" });
+  }
+
+  const [_, token] = authHeader.split(" ");
+  if (!token) {
+    return res.status(401).send({ message: "auth token not found" });
+  }
+
+  let decoded;
+  try {
+    decoded = jwt.verify(token, JWT_SECRET);
+  } catch (error) {
+    return res.status(401).send({ message: "invalid token" });
+  }
+
+  const user = db[decoded.sub];
+
+  if (!user) {
+    return res.status(401).send({ message: "token owner not found" });
+  }
+
+  res.send({ user });
+});
+
 app.listen(3333, () => {
   console.log("server started at 3333");
 });
