@@ -53,7 +53,7 @@ app.post("/login", async (req, res) => {
     return res.status(404).send({ message: "user not found" });
   }
 
-  const token = jwt.sign({ sub: user.id }, JWT_SECRET);
+  const token = jwt.sign({ sub: user.id }, JWT_SECRET, { expiresIn: "15m" });
   return res.send({ user, token });
 });
 
