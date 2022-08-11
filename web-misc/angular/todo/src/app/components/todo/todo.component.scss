@@ -1,0 +1,53 @@
+.todo {
+  padding: 6px;
+  display: flex;
+  justify-content: space-between;
+  transition: transform 0.3s;
+
+  span {
+    max-width: 70%;
+    transition: text-decoration 0.2s;
+  }
+
+  button {
+    height: 36px;
+    width: 88px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    transition: filter 0.1s;
+  }
+
+  button:hover {
+    filter: brightness(0.9);
+  }
+  button:active {
+    opacity: 0.9;
+  }
+
+  .remove-btn {
+    background: #b00020;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .done-btn {
+    background: #4aaf4a;
+    border-radius: 4px 0 0 4px;
+  }
+}
+
+.todo.isDone {
+  span {
+    text-decoration: line-through;
+  }
+  .done-btn {
+    border: 2px solid #4aaf4a;
+    color: #4aaf4a;
+    background-color: transparent;
+  }
+}
+
+.todo.toBeRemoved {
+  transform: scale(0);
+}
