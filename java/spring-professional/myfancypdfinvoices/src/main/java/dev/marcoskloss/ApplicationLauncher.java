@@ -12,7 +12,7 @@ public class ApplicationLauncher {
         tomcat.getConnector(); // bootstraps Tomcat's http engine
 
         Context ctx = tomcat.addContext("", null);
-        Wrapper servlet = Tomcat.addServlet(ctx, "myFirstServlet", new MyFirstServerlet());
+        Wrapper servlet = Tomcat.addServlet(ctx, "myFirstServlet", new MyFancyPDFInvoicesServerlet());
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/*");
 
