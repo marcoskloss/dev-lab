@@ -1,4 +1,4 @@
-package dev.marcoskloss;
+package dev.marcoskloss.myfancypdfinvoices;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;

@@ -20,6 +20,11 @@
             <artifactId>tomcat-embed-core</artifactId>
             <version>9.0.58</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.13.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -40,7 +45,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>dev.marcoskloss.ApplicationLauncher</mainClass>
+                            <mainClass>dev.marcoskloss.myfancypdfinvoices.ApplicationLauncher</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -60,7 +65,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>dev.marcoskloss.ApplicationLauncher</mainClass>
+                                    <mainClass>dev.marcoskloss.myfancypdfinvoices.ApplicationLauncher</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
