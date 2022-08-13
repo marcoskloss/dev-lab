@@ -1,6 +1,8 @@
-package dev.marcoskloss.myfancypdfinvoices;
+package dev.marcoskloss.myfancypdfinvoices.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dev.marcoskloss.myfancypdfinvoices.model.Invoice;
+import dev.marcoskloss.myfancypdfinvoices.service.InvoiceService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

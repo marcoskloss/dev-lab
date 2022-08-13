@@ -1,4 +1,6 @@
-package dev.marcoskloss.myfancypdfinvoices;
+package dev.marcoskloss.myfancypdfinvoices.service;
+
+import dev.marcoskloss.myfancypdfinvoices.model.Invoice;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;

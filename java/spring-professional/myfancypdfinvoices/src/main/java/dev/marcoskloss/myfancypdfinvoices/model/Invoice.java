@@ -1,4 +1,4 @@
-package dev.marcoskloss.myfancypdfinvoices;
+package dev.marcoskloss.myfancypdfinvoices.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
