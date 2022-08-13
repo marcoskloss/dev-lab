@@ -1,6 +1,7 @@
 package dev.marcoskloss.myfancypdfinvoices.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dev.marcoskloss.myfancypdfinvoices.context.Application;
 import dev.marcoskloss.myfancypdfinvoices.model.Invoice;
 import dev.marcoskloss.myfancypdfinvoices.service.InvoiceService;
 
@@ -12,10 +13,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class MyFancyPDFInvoicesServerlet extends HttpServlet {
-
-    private InvoiceService invoiceService = new InvoiceService();
-    private ObjectMapper objMapper = new ObjectMapper();
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         String reqUrl = req.getRequestURI();
@@ -30,8 +27,8 @@ public class MyFancyPDFInvoicesServerlet extends HttpServlet {
                     "</html>"
             );
         } else if(reqUrl.equalsIgnoreCase("/invoices")) {
-            List<Invoice> invoices = invoiceService.listAll();
-            String json = objMapper.writeValueAsString(invoices);
+            List<Invoice> invoices = Application.invoiceService.listAll();
+            String json = Application.objMapper.writeValueAsString(invoices);
             res.setContentType("application/json; charset=UTF-8");
             res.getWriter().print(json);
         }
@@ -44,8 +41,8 @@ public class MyFancyPDFInvoicesServerlet extends HttpServlet {
             String userId = req.getParameter("user_id");
             Integer amount = Integer.valueOf(req.getParameter("amount"));
 
-            Invoice invoice = invoiceService.create(userId, amount);
-            String json = objMapper.writeValueAsString(invoice);
+            Invoice invoice = Application.invoiceService.create(userId, amount);
+            String json = Application.objMapper.writeValueAsString(invoice);
 
             res.setContentType("application/json; charset=UTF-8");
             res.getWriter().print(json);
