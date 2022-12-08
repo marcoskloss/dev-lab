@@ -1,0 +1,15 @@
+{
+  "name": "nosql-tde",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/tde.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parse": "^5.3.3",
+    "mongodb": "^4.12.1"
+  }
+}
