@@ -31,7 +31,7 @@ fn median(vec: &Vec<i32>) -> i32 {
     let median_value = sorted_vec
         .get(vec.len() / 2)
         .unwrap();
-    median_value.clone()
+    median_value.clone() // or: *median_value
 }
 
 fn mode(vec: &Vec<i32>) -> i32 {
