@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import { Content } from '../entities/content';
 import { Notification } from '../entities/notification';
 import { NotificationRepository } from '../repositories/notification-repository';
@@ -13,6 +14,7 @@ interface Response {
   notification: Notification;
 }
 
+@Injectable()
 export class SendNotification implements UseCase<Params, Response> {
   constructor(private notificationRepository: NotificationRepository) {}
 
