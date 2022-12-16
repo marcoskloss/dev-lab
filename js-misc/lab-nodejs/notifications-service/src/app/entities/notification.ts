@@ -22,14 +22,6 @@ export class Notification {
     };
   }
 
-  public value() {
-    return {
-      ...this.props,
-      id: this.id,
-      content: this.props.content.value,
-    };
-  }
-
   public get id() {
     return this._id;
   }
