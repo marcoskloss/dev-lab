@@ -11,7 +11,7 @@ export default {
   moduleNameMapper: {
     '@app/(.*)': ['<rootDir>/app/$1'],
     '@infra/(.*)': ['<rootDir>/infra/$1'],
-    '@test/(.*)': ['./test/$1'],
+    '@test/(.*)': ['<rootDir>/../test/$1'],
     '@types/(.*)': ['<rootDir>/types/$1'],
   },
 };
