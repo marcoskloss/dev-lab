@@ -1,11 +1,16 @@
+import { NotificationRepository } from '@app/repositories/notification-repository';
 import { SendNotification } from './send-notification';
 
-const notificationRepositoryMock = {
-  create: jest.fn(),
-};
+class NotificationRepositoryMock extends NotificationRepository {
+  create = jest.fn();
+  findById = jest.fn();
+  save = jest.fn();
+}
 
 describe('Use Case - Send Notification', () => {
   it('should be able to send a notification', async () => {
+    const notificationRepositoryMock = new NotificationRepositoryMock();
+
     const notificationSender = new SendNotification(notificationRepositoryMock);
     const { notification } = await notificationSender.execute({
       category: 'foo',
