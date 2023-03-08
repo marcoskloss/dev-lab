@@ -13,4 +13,3 @@ let reformat(logLine: string): string =
   let msg = message logLine
   let label = logLevel logLine
   msg + " (" + label + ")"
-
