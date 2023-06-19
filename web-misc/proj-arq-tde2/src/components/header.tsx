@@ -1,13 +1,16 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { ReactNode } from "react";
+import { Heading, HStack } from "@chakra-ui/react";
 
 type Props = {
   title: string;
+  left?: ReactNode;
 };
 
-export function Header({ title }: Props) {
+export function Header({ title, left = <></> }: Props) {
   return (
-    <Box as="header" p={5} bg="Background">
+    <HStack as="header" pb={5} bg="Background">
+      {left}
       <Heading size="md">TDE2 - {title}</Heading>
-    </Box>
+    </HStack>
   );
 }
