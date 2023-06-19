@@ -1,15 +1,15 @@
 import { FormEvent } from "react";
 import { Button, FormControl, FormLabel, Input, Stack } from "@chakra-ui/react";
 
-import { Layout } from "../components/layout";
-import { useFormState } from "../hooks/form-state";
+import { Layout } from "../../components/layout";
+import { useFormState } from "../../hooks/form-state";
 
 const formInitialState = {
   nome: "",
   universidade_id: "",
 };
 
-export function Curso() {
+export function NewCurso() {
   const { getValue, setValue, getValues } = useFormState({
     initialState: formInitialState,
   });
