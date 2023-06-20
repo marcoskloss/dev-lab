@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { Layout } from "../../components/layout";
 import { CursoDataRow } from "./components/table";
+import { useNavigate } from "react-router-dom";
 
 export type Curso = {
   nome: string;
@@ -33,8 +34,10 @@ const CursoFormActions = ({ onClickNewCurso }: CursoFormActionsProps) => (
 );
 
 export function Curso() {
+  const navigate = useNavigate()
+
   const onAddNewCurso = () => {
-    alert("hey =D");
+    navigate('/curso/novo')
   };
 
   const onDeleteCurso = (curso: Curso) => {
@@ -42,7 +45,8 @@ export function Curso() {
   };
 
   const onUpdateCurso = (curso: Curso) => {
-    alert("onUpdateCurso " + curso.nome);
+    const cursoId = 1; // curso.id
+    navigate(`/curso/atualizar/${cursoId}`)
   };
 
   const isEmptyTable = cursoRows.length === 0;

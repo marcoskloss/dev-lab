@@ -9,7 +9,7 @@ const formInitialState = {
   universidade_id: "",
 };
 
-export function NewCurso() {
+export function UpdateCurso() {
   const { getValue, setValue, getValues } = useFormState({
     initialState: formInitialState,
   });
@@ -47,3 +47,4 @@ export function NewCurso() {
     </div>
   );
 }
+
