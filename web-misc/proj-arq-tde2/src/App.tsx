@@ -9,6 +9,8 @@ import { UpdateCurso } from "./pages/curso/update-curso";
 import { Aluno } from "./pages/aluno";
 import { Disciplina } from "./pages/disciplina";
 
+import { Teste } from "./pages/teste";
+
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/matricula", element: <Matricula /> },
@@ -17,6 +19,7 @@ const router = createBrowserRouter([
   { path: "/curso/atualizar/:cursoId", element: <UpdateCurso /> },
   { path: "/aluno", element: <Aluno /> },
   { path: "/disciplina", element: <Disciplina /> },
+  { path: "/teste", element: <Teste /> },
 ]);
 
 export function App() {
