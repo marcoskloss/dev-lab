@@ -1,3 +1,5 @@
 export function Home() {
-  return <div>home</div>;
+  return <div>
+    TROCAR DE BANCO
+  </div>;
 }

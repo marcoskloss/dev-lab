@@ -1,5 +1,6 @@
 import { FormEvent } from "react";
-import { Button, FormControl, FormLabel, Input, Stack } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, HStack, Input, Stack } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom"
 
 import { Layout } from "../../components/layout";
 import { useFormState } from "../../hooks/form-state";
@@ -10,6 +11,8 @@ const formInitialState = {
 };
 
 export function CreateCurso() {
+  const navigate = useNavigate()
+
   const { getValue, setValue, getValues } = useFormState({
     initialState: formInitialState,
   });
@@ -18,6 +21,8 @@ export function CreateCurso() {
     ev.preventDefault();
     console.log(getValues());
   };
+
+  const onCancel = () => navigate('/curso')
 
   return (
     <div>
@@ -39,9 +44,14 @@ export function CreateCurso() {
               onChange={(ev) => setValue("universidade_id", ev.target.value)}
             />
           </FormControl>
-          <Button type="submit" colorScheme="blue" w={100}>
-            Salvar
-          </Button>
+          <HStack>
+            <Button type="button" colorScheme="gray" onClick={onCancel}>
+              Cancelar
+            </Button>
+            <Button type="submit" colorScheme="blue">
+              Salvar
+            </Button>
+          </HStack>
         </Stack>
       </Layout>
     </div>
