@@ -1,50 +1,44 @@
-import { FormEvent } from "react";
-import { Button, FormControl, FormLabel, Input, Stack } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { Layout } from "../../components/layout";
-import { useFormState } from "../../hooks/form-state";
+import { getCourseById, updateCourse } from "../../services/curso.ts";
+import { type Curso } from "./index.tsx";
+import { CourseForm } from "./components/course-form.tsx";
 
-const formInitialState = {
+const emptyFormState: Curso = {
+  id: 0,
   nome: "",
   universidade_id: "",
 };
 
 export function UpdateCurso() {
-  const { getValue, setValue, getValues } = useFormState({
-    initialState: formInitialState,
-  });
+  const navigate = useNavigate();
+  const { courseId } = useParams();
 
-  const onSubmit = (ev: FormEvent) => {
-    ev.preventDefault();
-    console.log(getValues());
+  const [course, setCourse] = useState(emptyFormState);
+
+  const onSubmit = async (course: Curso) => {
+    await updateCourse(course);
+    window.alert("Curso editado com sucesso");
+    navigate("/curso");
   };
+
+  const onCancel = () => navigate("/curso");
+
+  useEffect(() => {
+    getCourseById(Number(courseId)).then(setCourse);
+  }, [courseId]);
 
   return (
     <div>
-      <Layout title="Cadastro de Curso">
-        <Stack gap={4} as="form" onSubmit={onSubmit}>
-          <FormControl>
-            <FormLabel>Nome</FormLabel>
-            <Input
-              type="text"
-              value={getValue("nome")}
-              onChange={(ev) => setValue("nome", ev.target.value)}
-            />
-          </FormControl>
-          <FormControl>
-            <FormLabel>ID Universidade</FormLabel>
-            <Input
-              type="number"
-              value={getValue("universidade_id")}
-              onChange={(ev) => setValue("universidade_id", ev.target.value)}
-            />
-          </FormControl>
-          <Button type="submit" colorScheme="blue" w={100}>
-            Salvar
-          </Button>
-        </Stack>
+      <Layout title="Atualizar Curso">
+        <CourseForm
+          onSubmit={onSubmit}
+          onCancel={onCancel}
+          initialState={course}
+        />
       </Layout>
     </div>
   );
 }
-

@@ -11,7 +11,7 @@ import {
 import { Link as RouterLink, useLocation } from "react-router-dom";
 
 const menuLinks = [
-  { path: "/", name: "Home" },
+  { path: "/universidade", name: "Universidade" },
   { path: "/matricula", name: "Matrícula" },
   { path: "/curso", name: "Curso" },
   { path: "/aluno", name: "Aluno" },

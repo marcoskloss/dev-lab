@@ -1,31 +1,58 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 
-import { Home } from "./pages/home";
 import { Matricula } from "./pages/matricula";
 import { Curso } from "./pages/curso";
 import { CreateCurso } from "./pages/curso/create-curso";
 import { UpdateCurso } from "./pages/curso/update-curso";
 import { Aluno } from "./pages/aluno";
 import { Disciplina } from "./pages/disciplina";
-
-import { Teste } from "./pages/teste";
+import { CreateAluno } from "./pages/aluno/create-aluno";
+import { UpdateAluno } from "./pages/aluno/update-aluno";
+import { CreateDisciplina } from "./pages/disciplina/create-disciplina";
+import { UpdateDisciplina } from "./pages/disciplina/update-disciplina";
+import { CreateMatricula } from "./pages/matricula/create-enrollment";
+import { UpdateMatricula } from "./pages/matricula/update-enrollment";
+import { DbContextProvider } from "./hooks/use-db-state";
+import { Universidade } from "./pages/universidade";
+import { CreateUniversidade } from "./pages/universidade/create-universidade";
+import { UpdateUniversidade } from "./pages/universidade/update-universidade";
 
 const router = createBrowserRouter([
-  { path: "/", element: <Home /> },
+  { path: "/", element: <Universidade /> },
+  { path: "/universidade", element: <Universidade /> },
+  { path: "/universidade/novo", element: <CreateUniversidade /> },
+  {
+    path: "/universidade/atualizar/:universityId",
+    element: <UpdateUniversidade />,
+  },
+
   { path: "/matricula", element: <Matricula /> },
+  { path: "/matricula/novo", element: <CreateMatricula /> },
+  { path: "/matricula/atualizar/:enrollmentId", element: <UpdateMatricula /> },
+
   { path: "/curso", element: <Curso /> },
   { path: "/curso/novo", element: <CreateCurso /> },
-  { path: "/curso/atualizar/:cursoId", element: <UpdateCurso /> },
+  { path: "/curso/atualizar/:courseId", element: <UpdateCurso /> },
+
   { path: "/aluno", element: <Aluno /> },
+  { path: "/aluno/novo", element: <CreateAluno /> },
+  { path: "/aluno/atualizar/:studentId", element: <UpdateAluno /> },
+
   { path: "/disciplina", element: <Disciplina /> },
-  { path: "/teste", element: <Teste /> },
+  { path: "/disciplina/novo", element: <CreateDisciplina /> },
+  {
+    path: "/disciplina/atualizar/:disciplineId",
+    element: <UpdateDisciplina />,
+  },
 ]);
 
 export function App() {
   return (
     <ChakraProvider>
-      <RouterProvider router={router} />
+      <DbContextProvider>
+        <RouterProvider router={router} />
+      </DbContextProvider>
     </ChakraProvider>
   );
 }

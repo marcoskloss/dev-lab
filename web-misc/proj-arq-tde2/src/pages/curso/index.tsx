@@ -1,88 +1,42 @@
-import {
-  Button,
-  Table,
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Button } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
+
 import { Layout } from "../../components/layout";
-import { CursoDataRow } from "./components/table";
-import { useNavigate } from "react-router-dom";
+import { deleteCourse, getAllCourses } from "../../services/curso";
+import { CourseTable } from "./components/course-table";
 
 export type Curso = {
+  id: number;
   nome: string;
   universidade_id: string;
 };
 
-const cursoTableHead = ["Nome", "ID Universidade", "Ações"];
-const cursoRows = [
-  { nome: "Curso X", universidade_id: "Uni_XPTO" },
-  { nome: "Curso Y", universidade_id: "Uni_XPTO" },
-  { nome: "Curso Z", universidade_id: "Uni_XPTO" },
-  { nome: "Curso 1", universidade_id: "Uni_XPTO" },
-  { nome: "Curso 2", universidade_id: "Uni_XPTO" },
-];
-
-type CursoFormActionsProps = { onClickNewCurso: () => void };
-const CursoFormActions = ({ onClickNewCurso }: CursoFormActionsProps) => (
-  <Button colorScheme="green" ml="auto" onClick={onClickNewCurso}>
+const CursoFormActions = () => (
+  <Button as={RouterLink} colorScheme="green" ml="auto" to="/curso/novo">
     Novo Curso
   </Button>
 );
 
 export function Curso() {
-  const navigate = useNavigate()
+  const [courses, setCourses] = useState<Curso[]>([]);
 
-  const onAddNewCurso = () => {
-    navigate('/curso/novo')
+  const onDelete = async (curso: Curso) => {
+    const confirmDeletion = window.confirm(
+      `Deseja realmente excluir o curso: ${curso.nome}?`
+    );
+    if (!confirmDeletion) return;
+    const updatedCourseList = await deleteCourse(courses, curso.id);
+    setCourses(updatedCourseList);
   };
 
-  const onDeleteCurso = (curso: Curso) => {
-    alert("onDeleteCurso " + curso.nome);
-  };
-
-  const onUpdateCurso = (curso: Curso) => {
-    const cursoId = 1; // curso.id
-    navigate(`/curso/atualizar/${cursoId}`)
-  };
-
-  const isEmptyTable = cursoRows.length === 0;
+  useEffect(() => {
+    getAllCourses().then(setCourses);
+  }, []);
 
   return (
-    <Layout
-      title="Cursos"
-      headerAction={<CursoFormActions onClickNewCurso={onAddNewCurso} />}
-    >
-      <TableContainer>
-        <Table variant="simple">
-          <TableCaption>
-            {isEmptyTable
-              ? "Nenhum curso cadastrado"
-              : "Lista de cursos cadastrados"}
-          </TableCaption>
-
-          <Thead>
-            <Tr>
-              {cursoTableHead.map((thName) => (
-                <Th>{thName}</Th>
-              ))}
-            </Tr>
-          </Thead>
-
-          <Tbody>
-            {cursoRows.map((curso) => (
-              <CursoDataRow
-                curso={curso}
-                onDelete={onDeleteCurso}
-                onUpdate={onUpdateCurso}
-              />
-            ))}
-          </Tbody>
-        </Table>
-      </TableContainer>
+    <Layout title="Cursos" headerAction={<CursoFormActions />}>
+      <CourseTable courseList={courses} onDelete={onDelete} />
     </Layout>
   );
 }
