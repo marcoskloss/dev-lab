@@ -4,7 +4,6 @@ import { Layout } from "../../components/layout";
 import { type Universidade } from ".";
 import { UniversityForm } from "./components/university-form";
 import { saveUniversity } from "../../services/universidade";
-import { useState } from "react";
 
 const formEmptyState: Universidade = {
   id: NaN,
