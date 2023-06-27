@@ -16,6 +16,7 @@ const menuLinks = [
   { path: "/curso", name: "Curso" },
   { path: "/aluno", name: "Aluno" },
   { path: "/disciplina", name: "Disciplina" },
+  { path: "/relatorio", name: "Relatório" },
 ];
 
 type Props = { isOpen: boolean; onClose: () => void };

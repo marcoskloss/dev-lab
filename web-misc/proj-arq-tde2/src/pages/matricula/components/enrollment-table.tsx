@@ -70,13 +70,6 @@ const EnrollmentDataRow = ({
       <Td>{enrollment.semestre}</Td>
       <Td>
         <HStack>
-          <Button
-            colorScheme="blue"
-            as={Link}
-            to={`/matricula/atualizar/${enrollment.id}`}
-          >
-            Editar
-          </Button>
           <Button colorScheme="red" onClick={() => onDelete(enrollment)}>
             Excluir
           </Button>

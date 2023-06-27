@@ -9,7 +9,7 @@ import { CourseTable } from "./components/course-table";
 export type Curso = {
   id: number;
   nome: string;
-  universidade_id: string;
+  universidade_id: number;
 };
 
 const CursoFormActions = () => (

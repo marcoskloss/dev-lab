@@ -12,11 +12,11 @@ import { UpdateAluno } from "./pages/aluno/update-aluno";
 import { CreateDisciplina } from "./pages/disciplina/create-disciplina";
 import { UpdateDisciplina } from "./pages/disciplina/update-disciplina";
 import { CreateMatricula } from "./pages/matricula/create-enrollment";
-import { UpdateMatricula } from "./pages/matricula/update-enrollment";
 import { DbContextProvider } from "./hooks/use-db-state";
 import { Universidade } from "./pages/universidade";
 import { CreateUniversidade } from "./pages/universidade/create-universidade";
 import { UpdateUniversidade } from "./pages/universidade/update-universidade";
+import { Relatorio } from "./pages/relatorio";
 
 const router = createBrowserRouter([
   { path: "/", element: <Universidade /> },
@@ -29,7 +29,6 @@ const router = createBrowserRouter([
 
   { path: "/matricula", element: <Matricula /> },
   { path: "/matricula/novo", element: <CreateMatricula /> },
-  { path: "/matricula/atualizar/:enrollmentId", element: <UpdateMatricula /> },
 
   { path: "/curso", element: <Curso /> },
   { path: "/curso/novo", element: <CreateCurso /> },
@@ -45,6 +44,8 @@ const router = createBrowserRouter([
     path: "/disciplina/atualizar/:disciplineId",
     element: <UpdateDisciplina />,
   },
+
+  { path: "/relatorio", element: <Relatorio /> },
 ]);
 
 export function App() {
