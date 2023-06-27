@@ -11,7 +11,6 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import { type Matricula } from "..";
-import { Link } from "react-router-dom";
 
 type Props = {
   enrollmentList: Matricula[];

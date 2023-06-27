@@ -8,7 +8,7 @@ import { CourseForm } from "./components/course-form";
 const formEmptyState: Curso = {
   id: 0,
   nome: "",
-  universidade_id: "",
+  universidade_id: NaN,
 };
 
 export function CreateCurso() {

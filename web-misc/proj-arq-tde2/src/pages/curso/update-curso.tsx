@@ -9,7 +9,7 @@ import { CourseForm } from "./components/course-form.tsx";
 const emptyFormState: Curso = {
   id: 0,
   nome: "",
-  universidade_id: "",
+  universidade_id: NaN,
 };
 
 export function UpdateCurso() {
